@@ -13,24 +13,24 @@ class _CatalogScreenState extends State<CatalogScreen> {
   final List<Sight> _sights = [
     Sight(
       id: '1',
-      title: 'Озеро Байкал',
-      description: 'Самое глубокое озеро на планете с чистейшей водой.',
-      imageUrl: 'https://picsum.photos/id/1018/600/400',
-      likeCount: 42,
+      title: 'Гуппи',
+      description: 'Неприхотливая и яркая живородящая рыбка для любого аквариума.',
+      imageUrl: 'assets/images/istockphoto-178152778-612x612.jpg',
+      likeCount: 15,
     ),
     Sight(
       id: '2',
-      title: 'Кавказские горы',
-      description: 'Величественные горные вершины и живописные ущелья.',
-      imageUrl: 'https://picsum.photos/id/1015/600/400',
-      likeCount: 18,
+      title: 'Скалярия',
+      description: 'Грациозная рыбка-ангел с красивыми плавниками и спокойным нравом.',
+      imageUrl: 'assets/images/istockphoto-178152778-612x612.jpg',
+      likeCount: 24,
     ),
     Sight(
       id: '3',
-      title: 'Амурский залив',
-      description: 'Живописный залив Японского моря на Дальнем Востоке.',
-      imageUrl: 'https://picsum.photos/id/1039/600/400',
-      likeCount: 25,
+      title: 'Золотая рыбка',
+      description: 'Классическая обитательница аквариумов с роскошным хвостом.',
+      imageUrl: 'assets/images/istockphoto-178152778-612x612.jpg',
+      likeCount: 31,
     ),
   ];
 
@@ -42,7 +42,7 @@ class _CatalogScreenState extends State<CatalogScreen> {
         sight.likeCount++;
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text('Вы добавили в избранное: ${sight.title}'),
+            content: Text('В избранное добавлено: ${sight.title}'),
             duration: const Duration(seconds: 2),
           ),
         );
@@ -50,7 +50,7 @@ class _CatalogScreenState extends State<CatalogScreen> {
         sight.likeCount--;
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text('Вы удалили из избранного: ${sight.title}'),
+            content: Text('Удалено из избранного: ${sight.title}'),
             duration: const Duration(seconds: 2),
           ),
         );
@@ -62,7 +62,7 @@ class _CatalogScreenState extends State<CatalogScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Каталог мест'),
+        title: const Text('Каталог рыбок'),
         centerTitle: true,
       ),
       body: ListView.builder(

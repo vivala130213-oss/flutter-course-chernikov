@@ -16,54 +16,61 @@ class CatalogCard extends StatelessWidget {
     return Card(
       margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       clipBehavior: Clip.antiAlias,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12),
+      ),
+      elevation: 3,
       child: Column(
-        crossAxisAlignment: CrossAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Image.network(
-            sight.imageUrl,
+          SizedBox(
             height: 180,
             width: double.infinity,
-            fit: BoxFit.cover,
-            errorBuilder: (context, error, stackTrace) => Container(
-              height: 180,
-              color: Colors.grey[300],
-              child: const Icon(Icons.broken_image, size: 50, color: Colors.grey),
+            child: Image.asset(
+              sight.imageUrl,
+              fit: BoxFit.cover,
+              errorBuilder: (context, error, stackTrace) {
+                return const Center(
+                  child: Icon(Icons.broken_image, size: 50, color: Colors.grey),
+                );
+              },
             ),
           ),
           Padding(
             padding: const EdgeInsets.all(12),
             child: Column(
-              crossAxisAlignment: CrossAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   sight.title,
-                  style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                        fontWeight: FontWeight.bold,
+                      ),
                 ),
                 const SizedBox(height: 6),
                 Text(
                   sight.description,
-                  style: TextStyle(color: Colors.grey[700]),
+                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                        color: Colors.black,
+                      ),
                 ),
-                const SizedBox(height: 10),
+                const SizedBox(height: 12),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Row(
                       children: [
-                        Icon(
-                          sight.isLiked ? Icons.favorite : Icons.favorite_border,
-                          color: sight.isLiked ? Colors.red : Colors.grey,
+                        IconButton(
+                          icon: Icon(
+                            sight.isLiked
+                                ? Icons.favorite
+                                : Icons.favorite_border,
+                            color: sight.isLiked ? Colors.red : Colors.grey,
+                          ),
+                          onPressed: onLikePressed,
                         ),
-                        const SizedBox(width: 4),
                         Text('${sight.likeCount}'),
                       ],
-                    ),
-                    IconButton(
-                      icon: Icon(
-                        sight.isLiked ? Icons.favorite : Icons.favorite_border,
-                        color: sight.isLiked ? Colors.red : Colors.grey,
-                      ),
-                      onPressed: onLikePressed,
                     ),
                   ],
                 ),
